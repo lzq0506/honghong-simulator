@@ -1,0 +1,306 @@
+@import url('https://fonts.googleapis.cn/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-cream: var(--cream);
+  --color-cream-deep: var(--cream-deep);
+  --color-blush: var(--blush);
+  --color-blush-deep: var(--blush-deep);
+  --color-heart: var(--heart);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-bubble-me: var(--bubble-me);
+  --color-note: var(--note);
+  --color-note-ink: var(--note-ink);
+  --color-line: var(--line);
+  --color-wx: var(--wx);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --font-sans:
+    'Noto Sans SC', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
+    ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+    'Courier New', monospace;
+  --font-serif:
+    'Noto Sans SC', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
+    ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+:root {
+  --radius: 0.75rem;
+  --background: #faf6f1;
+  --foreground: #2b2420;
+  --card: #ffffff;
+  --card-foreground: #2b2420;
+  --popover: #ffffff;
+  --popover-foreground: #2b2420;
+  --primary: #d9435f;
+  --primary-foreground: #ffffff;
+  --secondary: #f3ece5;
+  --secondary-foreground: #2b2420;
+  --muted: #f3ece5;
+  --muted-foreground: #9a8f86;
+  --accent: #f3ece5;
+  --accent-foreground: #2b2420;
+  --destructive: #b92c47;
+  --border: #efe6de;
+  --input: #efe6de;
+  --ring: #d9435f;
+  /* 哄哄模拟器主题色 */
+  --cream: #faf6f1;
+  --cream-deep: #f3ece5;
+  --blush: #d9435f;
+  --blush-deep: #b92c47;
+  --heart: #f2a7c3;
+  --ink: #2b2420;
+  --ink-soft: #9a8f86;
+  --bubble-me: #fbe9ed;
+  --note: #fff6e8;
+  --note-ink: #b98a2e;
+  --line: #efe6de;
+  --wx: #95ec69;
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: #faf6f1;
+  --sidebar-foreground: #2b2420;
+  --sidebar-primary: #d9435f;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-secondary: #f3ece5;
+  --sidebar-accent: #f3ece5;
+  --sidebar-accent-foreground: #2b2420;
+  --sidebar-border: #efe6de;
+  --sidebar-ring: #d9435f;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+body {
+  @apply font-sans;
+}
+
+/* 聊天气泡滑入 */
+@keyframes bubble-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.bubble-enter {
+  animation: bubble-in 0.2s ease-out both;
+}
+
+/* 批注便签淡入 */
+@keyframes note-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.note-enter {
+  animation: note-in 0.3s ease-out 0.25s both;
+}
+
+/* 正在输入…三点 */
+@keyframes typing-dot {
+  0%,
+  60%,
+  100% {
+    opacity: 0.3;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+}
+
+.typing-dot {
+  animation: typing-dot 1.2s ease-in-out infinite;
+}
+
+/* 核级雷区屏幕轻震 */
+@keyframes screen-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-6px);
+  }
+  40% {
+    transform: translateX(6px);
+  }
+  60% {
+    transform: translateX(-4px);
+  }
+  80% {
+    transform: translateX(4px);
+  }
+}
+
+.animate-shake {
+  animation: screen-shake 0.4s ease-in-out;
+}
+
+/* 好感爱心跳动 */
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.2);
+  }
+  45% {
+    transform: scale(1);
+  }
+}
+
+.animate-heartbeat {
+  animation: heartbeat 0.8s ease-in-out;
+}
+
+/* 答对/答错 愤怒值反馈徽标上浮 */
+@keyframes float-up {
+  0% {
+    opacity: 0;
+    transform: translateY(8px) scale(0.7);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(-2px) scale(1.08);
+  }
+  45% {
+    opacity: 1;
+    transform: translateY(-12px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-44px) scale(0.96);
+  }
+}
+
+.feedback-float {
+  animation: float-up 1s ease-out both;
+}
+
+/* 答对时小爱心飘散 */
+@keyframes mini-heart {
+  0% {
+    opacity: 0;
+    transform: translate(0, 4px) scale(0.5);
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--drift, 8px), -34px) scale(1);
+  }
+}
+
+.mini-heart {
+  animation: mini-heart 0.9s ease-out both;
+}
+
+/* 语音条播放中喇叭闪烁 */
+@keyframes voice-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.voice-playing {
+  animation: voice-pulse 0.9s ease-in-out infinite;
+}
+
+/* 结局淡入上浮 */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rise-enter {
+  animation: rise-in 0.35s ease-out both;
+}
+
+/* 卡片轻上浮 */
+.card-lift {
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.card-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgb(43 36 32 / 8%);
+}
