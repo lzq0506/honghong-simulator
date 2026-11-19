@@ -136,8 +136,8 @@ export function HomeScreen({
       {/* 顶部导航栏 */}
       <header className="sticky top-0 z-10 border-b border-[var(--line)] bg-[#EDEDED]/95 backdrop-blur">
         <div className="flex h-12 items-center justify-between px-4">
-          <span className="flex items-center gap-1.5 text-[16px] font-bold text-[var(--ink)]">
-            <Heart className="h-4.5 w-4.5 fill-[var(--blush)] text-[var(--blush)]" />
+          <span className="flex items-center gap-1.5 text-[16px] font-bold text-purple-600">
+            <Heart className="h-4.5 w-4.5 fill-purple-600 text-purple-600" />
             哄哄模拟器
           </span>
           {authUser ? (
